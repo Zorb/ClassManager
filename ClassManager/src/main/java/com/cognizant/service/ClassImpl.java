@@ -17,6 +17,11 @@ public class ClassImpl implements ClassService {
 		LOGGER.info("In ClassImpl getAllClasses ");
 		return repo.getAllClasses();
 	}
+
+	public String getAllTrainees() {
+		LOGGER.info("In ClassImpl getAllTrainees ");
+		return repo.getAllTrainees();
+	}
 	public String createClass(String classroom) {
 		return repo.createClass(classroom);
 	}

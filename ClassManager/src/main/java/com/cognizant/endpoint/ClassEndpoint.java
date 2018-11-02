@@ -24,6 +24,12 @@ public class ClassEndpoint {
 		return service.getAllClasses();
 	}
 
+	@Path("/jsontr")
+	@GET
+	@Produces({ "application/json" })
+	public String getAllTrainees() {
+		return service.getAllTrainees();
+	}
 	@Path("/json")
 	@POST
 	@Produces({ "application/json" })

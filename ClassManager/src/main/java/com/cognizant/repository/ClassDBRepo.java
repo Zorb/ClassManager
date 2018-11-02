@@ -32,6 +32,11 @@ public class ClassDBRepo implements ClassRepo {
 		return util.getJSONForObject(classes);
 	}
 
+	public String getAllTrainees() {
+		Query query = manager.createQuery("Select c FROM Trainee c");
+		Collection<Classroom> trainees = (Collection<Classroom>) query.getResultList();
+		return util.getJSONForObject(trainees);
+	}
 	@Transactional(REQUIRED)
 	public String createClass(String classroom) {
 		Classroom aClass = util.getObjectForJSON(classroom, Classroom.class);
