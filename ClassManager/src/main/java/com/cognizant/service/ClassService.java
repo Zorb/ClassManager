@@ -1,6 +1,6 @@
-package com.cognizant.repository;
+package com.cognizant.service;
 
-public interface ClassRepo {
+public interface ClassService {
 
 	String getAllClasses();
 
@@ -9,5 +9,4 @@ public interface ClassRepo {
 	String updateClass(Long id, String classToUpdate);
 
 	String deleteClass(Long id);
-
 }

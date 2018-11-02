@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import com.cognizant.domain.Trainer;
+import com.cognizant.domain.Classroom;
 import com.cognizant.util.JSONUtil;
 
 
@@ -26,41 +26,41 @@ public class ClassDBRepo implements ClassRepo {
 	@Inject
 	private JSONUtil util;
 
-	public String getAllTrainers() {
-		Query query = manager.createQuery("Select a FROM Account a");
-		Collection<Trainer> accounts = (Collection<Trainer>) query.getResultList();
-		return util.getJSONForObject(accounts);
+	public String getAllClasses() {
+		Query query = manager.createQuery("Select c FROM Classes c");
+		Collection<Classroom> classes = (Collection<Classroom>) query.getResultList();
+		return util.getJSONForObject(classes);
 	}
 
 	@Transactional(REQUIRED)
-	public String createTrainer(String trainer) {
-		Trainer aTrainer = util.getObjectForJSON(trainer, Trainer.class);
-		manager.persist(aTrainer);
-		return "{\"message\": \"account has been sucessfully added\"}";
+	public String createClass(String classroom) {
+		Classroom aClass = util.getObjectForJSON(classroom, Classroom.class);
+		manager.persist(aClass);
+		return "{\"message\": \"Class has been sucessfully added\"}";
 	}
 
 	@Transactional(REQUIRED)
-	public String updateTrainer(Long id, String trainerToUpdate) {
-		Trainer updatedTrainer = util.getObjectForJSON(trainerToUpdate, Trainer.class);
-		Trainer trainerFromDB = findTrainer(id);
-		if (trainerToUpdate != null) {
-			trainerFromDB = updatedTrainer;
-			manager.merge(trainerFromDB);
+	public String updateClass(Long id, String classToUpdate) {
+		Classroom updatedClass = util.getObjectForJSON(classToUpdate, Classroom.class);
+		Classroom classFromDB = findClass(id);
+		if (classToUpdate != null) {
+			classFromDB = updatedClass;
+			manager.merge(classFromDB);
 		}
-		return "{\"message\": \"account sucessfully updated\"}";
+		return "{\"message\": \"Class sucessfully updated\"}";
 	}
 
 	@Transactional(REQUIRED)
-	public String deleteTrainer(Long id) {
-		Trainer trainertInDB = findTrainer(id);
-		if (trainertInDB != null) {
-			manager.remove(trainertInDB);
+	public String deleteClass(Long id) {
+		Classroom classInDB = findClass(id);
+		if (classInDB != null) {
+			manager.remove(classInDB);
 		}
-		return "{\"message\": \"account sucessfully deleted\"}";
+		return "{\"message\": \"Class sucessfully deleted\"}";
 	}
 
-	private Trainer findTrainer(Long id) {
-		return manager.find(Trainer.class, id);
+	private Classroom findClass(Long id) {
+		return manager.find(Classroom.class, id);
 	}
 
 	public void setManager(EntityManager manager) {
@@ -70,5 +70,6 @@ public class ClassDBRepo implements ClassRepo {
 	public void setUtil(JSONUtil util) {
 		this.util = util;
 	}
+
 
 }
