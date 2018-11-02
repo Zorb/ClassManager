@@ -105,7 +105,7 @@ public class ClassDBRepo implements ClassRepo {
 		if (traineeFromDB != null) {
 			manager.remove(traineeFromDB);
 		}
-		return "{\"message\": \"Class sucessfully deleted\"}";
+		return "{\"message\": \"Trainee sucessfully deleted\"}";
 	}
 
 
