@@ -26,6 +26,9 @@ public class ClassImpl implements ClassService {
 		return repo.createClass(classroom);
 	}
 
+	public String createTrainee(String trainee) {
+		return repo.createTrainee(trainee);
+	}
 	public String updateClass(Long id, String classToUpdate) {
 		return repo.updateClass(id, classToUpdate);
 	}

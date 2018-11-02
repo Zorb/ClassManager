@@ -23,10 +23,11 @@ public class Trainee {
 
 	}
 
-	public Trainee(String firstName, String secondName, String piiNumber) {
+	public Trainee(String firstName, String secondName, String piiNumber, Long classid) {
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.piiNumber = piiNumber;
+		this.classid = classid;
 	}
 
 	public String getFirstName() {
@@ -63,6 +64,14 @@ public class Trainee {
 
 	public Long getClassroom() {
 		return classid;
+	}
+
+	public Long getClassid() {
+		return classid;
+	}
+
+	public void setClassid(Long classid) {
+		this.classid = classid;
 	}
 
 	public void setClassroom(Long classroom) {

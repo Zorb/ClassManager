@@ -37,6 +37,13 @@ public class ClassEndpoint {
 		return service.createClass(classroom);
 	}
 
+	@Path("/jsontr")
+	@POST
+	@Produces({ "application/json" })
+	public String createTrainee(String trainee) {
+		return service.createTrainee(trainee);
+	}
+
 	@Path("/json/{id}")
 	@PUT
 	@Produces({ "application/json" })

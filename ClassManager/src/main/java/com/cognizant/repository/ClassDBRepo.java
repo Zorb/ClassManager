@@ -13,6 +13,7 @@ import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import com.cognizant.domain.Classroom;
+import com.cognizant.domain.Trainee;
 import com.cognizant.util.JSONUtil;
 
 
@@ -34,14 +35,22 @@ public class ClassDBRepo implements ClassRepo {
 
 	public String getAllTrainees() {
 		Query query = manager.createQuery("Select c FROM Trainee c");
-		Collection<Classroom> trainees = (Collection<Classroom>) query.getResultList();
+		Collection<Trainee> trainees = (Collection<Trainee>) query.getResultList();
 		return util.getJSONForObject(trainees);
 	}
+
 	@Transactional(REQUIRED)
 	public String createClass(String classroom) {
 		Classroom aClass = util.getObjectForJSON(classroom, Classroom.class);
 		manager.persist(aClass);
 		return "{\"message\": \"Class has been sucessfully added\"}";
+	}
+	
+	@Transactional(REQUIRED)
+	public String createTrainee(String trainee) {
+		Trainee aTrainee = util.getObjectForJSON(trainee, Trainee.class);
+		manager.persist(aTrainee);
+		return "{\"message\": \"Trainee has been sucessfully added\"}";
 	}
 
 	@Transactional(REQUIRED)
@@ -68,6 +77,9 @@ public class ClassDBRepo implements ClassRepo {
 		return manager.find(Classroom.class, id);
 	}
 
+	private Trainee findTrainee(Long id) {
+		return manager.find(Trainee.class, id);
+	}
 	public void setManager(EntityManager manager) {
 		this.manager = manager;
 	}
