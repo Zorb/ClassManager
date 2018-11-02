@@ -1,5 +1,6 @@
 package com.cognizant.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,19 +11,22 @@ public class Trainee {
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
+	@Column(name = "tr_id")
 	private Long id;
 	private String firstName;
 	private String secondName;
-	private String accountNumber;
+	private String piiNumber;
+	@Column(name = "class_id")
+	private Long classid;
 
 	public Trainee() {
 
 	}
 
-	public Trainee(String firstName, String secondName, String accountNumber) {
+	public Trainee(String firstName, String secondName, String piiNumber) {
 		this.firstName = firstName;
 		this.secondName = secondName;
-		this.accountNumber = accountNumber;
+		this.piiNumber = piiNumber;
 	}
 
 	public String getFirstName() {
@@ -41,12 +45,12 @@ public class Trainee {
 		this.secondName = secondName;
 	}
 
-	public String getAccountNumber() {
-		return accountNumber;
+	public String getPiiNumber() {
+		return piiNumber;
 	}
 
-	public void setAccountNumber(String accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setPiiNumber(String piiNumber) {
+		this.piiNumber = piiNumber;
 	}
 
 	public Long getId() {
@@ -55,6 +59,14 @@ public class Trainee {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getClassroom() {
+		return classid;
+	}
+
+	public void setClassroom(Long classroom) {
+		this.classid = classroom;
 	}
 
 }

@@ -27,7 +27,7 @@ public class ClassDBRepo implements ClassRepo {
 	private JSONUtil util;
 
 	public String getAllClasses() {
-		Query query = manager.createQuery("Select c FROM Classes c");
+		Query query = manager.createQuery("Select c FROM Classroom c");
 		Collection<Classroom> classes = (Collection<Classroom>) query.getResultList();
 		return util.getJSONForObject(classes);
 	}
