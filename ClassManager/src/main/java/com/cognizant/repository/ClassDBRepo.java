@@ -88,5 +88,25 @@ public class ClassDBRepo implements ClassRepo {
 		this.util = util;
 	}
 
+	@Transactional(REQUIRED)
+	public String updateTrainee(Long id, String traineeToUpdate) {
+		Trainee updatedTrainee = util.getObjectForJSON(traineeToUpdate, Trainee.class);
+		Trainee traineeFromDB = findTrainee(id);
+		if (traineeToUpdate != null) {
+			traineeFromDB = updatedTrainee;
+			manager.merge(traineeFromDB);
+		}
+		return "{\"message\": \"Trainee sucessfully updated\"}";
+	}
+
+	@Transactional(REQUIRED)
+	public String deleteTrainee(Long id) {
+		Trainee traineeFromDB = findTrainee(id);
+		if (traineeFromDB != null) {
+			manager.remove(traineeFromDB);
+		}
+		return "{\"message\": \"Class sucessfully deleted\"}";
+	}
+
 
 }

@@ -12,5 +12,9 @@ public interface ClassService {
 
 	String updateClass(Long id, String classToUpdate);
 
+	String updateTrainee(Long id, String traineeToUpdate);
+
+	String deleteTrainee(Long id);
+
 	String deleteClass(Long id);
 }

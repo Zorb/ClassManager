@@ -12,6 +12,9 @@ public interface ClassRepo {
 
 	String updateClass(Long id, String classToUpdate);
 
-	String deleteClass(Long id);
+	String updateTrainee(Long id, String traineeToUpdate);
 
+	String deleteTrainee(Long id);
+
+	String deleteClass(Long id);
 }

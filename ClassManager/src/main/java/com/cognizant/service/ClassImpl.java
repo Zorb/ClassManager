@@ -41,4 +41,14 @@ public class ClassImpl implements ClassService {
 	public void setRepo(ClassRepo repo) {
 		this.repo = repo;
 	}
+
+	@Override
+	public String updateTrainee(Long id, String traineeToUpdate) {
+		return repo.updateTrainee(id, traineeToUpdate);
+	}
+
+	@Override
+	public String deleteTrainee(Long id) {
+		return repo.deleteTrainee(id);
+	}
 }

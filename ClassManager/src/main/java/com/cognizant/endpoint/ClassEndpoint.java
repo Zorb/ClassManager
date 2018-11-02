@@ -51,6 +51,20 @@ public class ClassEndpoint {
 		return service.updateClass(id, classroom);
 	}
 
+	@Path("/jsontr/{id}")
+	@PUT
+	@Produces({ "application/json" })
+	public String updateTrainee(@PathParam("id") Long id, String trainee) {
+		return service.updateTrainee(id, trainee);
+	}
+
+	@Path("/jsontr/{id}")
+	@DELETE
+	@Produces({ "application/json" })
+	public String deleteTrainee(@PathParam("id") Long id) {
+		return service.deleteTrainee(id);
+
+	}
 	@Path("/json/{id}")
 	@DELETE
 	@Produces({ "application/json" })
